@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
-import FluxoSaqueB5 from "./SAC/fluxos/b5/FluxoSaqueB5";
-import FluxoB5Deposito from "./SAC/fluxos/b5/FluxoB5Deposito";
-import FluxoB5Bonus from "./SAC/fluxos/b5/FluxoB5Bonus";
-import FluxoJetDeposito from "./SAC/fluxos/jetbet/FluxoJetDeposito";
-import FluxoJetSaque from "./SAC/fluxos/jetbet/FluxoJetSaque";
-import FluxoJetBonus from "./SAC/fluxos/jetbet/FluxoJetBonus";
-import FluxoPinDeposito from "./SAC/fluxos/pinbet/FluxoPinDeposito";
-import FluxoPinSaque from "./SAC/fluxos/pinbet/FluxoPinSaque";
-import FluxoPinBonus from "./SAC/fluxos/pinbet/FluxoPinBonus";
+import FluxoSaqueB5 from "./sac/fluxos/b5/FluxoSaqueB5";
+import FluxoB5Deposito from "./sac/fluxos/b5/FluxoB5Deposito";
+import FluxoB5Bonus from "./sac/fluxos/b5/FluxoB5Bonus";
+import FluxoJetDeposito from "./sac/fluxos/jetbet/FluxoJetDeposito";
+import FluxoJetSaque from "./sac/fluxos/jetbet/FluxoJetSaque";
+import FluxoJetBonus from "./sac/fluxos/jetbet/FluxoJetBonus";
+import FluxoPinDeposito from "./sac/fluxos/pinbet/FluxoPinDeposito";
+import FluxoPinSaque from "./sac/fluxos/pinbet/FluxoPinSaque";
+import FluxoPinBonus from "./sac/fluxos/pinbet/FluxoPinBonus";
 import Sidebar from "./components/Sidebar";
 
 const HomePage = () => {
