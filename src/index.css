@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menuBar {
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 4px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 99px;
+    background-color: #4c3a6d;
+  }
+
+  &::-webkit-scrollbar-button {
+    height: 16px;
+  }
+}
+
+.react-flow__node-selectorNode {
+  font-size: 12px;
+  background: #eee;
+  border: 1px solid #555;
+  border-radius: 5px;
+  text-align: center;
+}
