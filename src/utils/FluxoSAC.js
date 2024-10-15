@@ -1089,8 +1089,60 @@ export const fluxoSaqueJet = {
                   text: "Sim",
                   next: {
                     id: 4,
-                    question:
-                      "Verificar no perfil do cliente se há algum comentário sobre o bloqueio dos saques. Se não houver abrir um ticket para o Shift Manager analisar o caso.",
+                    question: "Saque realizado?",
+                    answers: [
+                      {
+                        text: "Sim",
+                        next: {
+                          id: 5,
+                          question: "Encerrar Atendimento.",
+                        },
+                      },
+                      {
+                        text: "Não",
+                        next: {
+                          id: 6,
+                          question:
+                            "Confirmar se verificação Refletiu no portal weebet?",
+                          answers: [
+                            {
+                              text: "Sim",
+                              next: {
+                                id: 7,
+                                question:
+                                  "Se o saque estiver cancelado veja o motivo no portal WeeBet. Peça ao cliente tentar fazer o saque novamente através de outro meio de pagamento",
+                                answers: [
+                                  {
+                                    text: "Continuar",
+                                    next: {
+                                      id: 8,
+                                      question: "Saque pago?",
+                                      answers: [
+                                        {
+                                          text: "Sim",
+                                          next: {
+                                            id: 9,
+                                            question: "Encerrar Atendimento.",
+                                          },
+                                        },
+                                        {
+                                          text: "Não",
+                                          next: {
+                                            id: 10,
+                                            question:
+                                              "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
                   },
                 },
                 {
@@ -1518,70 +1570,60 @@ export const fluxoDepositosJet = {
                     question: "Pagamento feito para Paag ou PrimePag",
                     answers: [
                       {
-                        text: "Continuar",
+                        text: "Sim",
                         next: {
                           id: 6,
-                          question:
-                            "Informar o cliente que o pagamento não foi feito para nós, neste caso precisa encaminhar o comprovante correto.",
+                          question: "Recebeu o comprovante correto?",
                           answers: [
                             {
-                              text: "Continuar",
+                              text: "Sim",
                               next: {
                                 id: 7,
-                                question: "Recebeu o comprovante correto?",
+                                question:
+                                  "Verificar no sistema se o depósito reclamado está pendente",
                                 answers: [
                                   {
-                                    text: "Sim",
+                                    text: "Continuar",
                                     next: {
                                       id: 8,
-                                      question:
-                                        "Verificar no sistema se o depósito reclamado está pendente",
+                                      question: "Status pendente?",
                                       answers: [
                                         {
-                                          text: "Continuar",
+                                          text: "Sim",
                                           next: {
                                             id: 9,
-                                            question: "Status pendente?",
+                                            question:
+                                              "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
+                                          },
+                                        },
+                                        {
+                                          text: "Não",
+                                          next: {
+                                            id: 15,
+                                            question:
+                                              "Informar ao cliente que o depósito foi concluído. Vá em FINANCEIRO > MOVIMENTAÇÕES > CLIENTE e veja se o saldo foi consumido em apostas.",
                                             answers: [
                                               {
-                                                text: "Sim",
+                                                text: "Continuar",
                                                 next: {
-                                                  id: 10,
+                                                  id: 12,
                                                   question:
-                                                    "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
-                                                },
-                                              },
-                                              {
-                                                text: "Não",
-                                                next: {
-                                                  id: 11,
-                                                  question:
-                                                    "Informar ao cliente que o depósito foi concluído. Vá em FINANCEIRO > MOVIMENTAÇÕES > CLIENTE e veja se o saldo foi consumido em apostas.",
+                                                    "Saldo consumido em apostas?",
                                                   answers: [
                                                     {
-                                                      text: "Continuar",
+                                                      text: "Sim",
                                                       next: {
-                                                        id: 12,
+                                                        id: 13,
                                                         question:
-                                                          "Saldo consumido em apostas?",
-                                                        answers: [
-                                                          {
-                                                            text: "Sim",
-                                                            next: {
-                                                              id: 13,
-                                                              question:
-                                                                "Explicar ao cliente sobre consumo do saldo de forma devida.",
-                                                            },
-                                                          },
-                                                          {
-                                                            text: " Não",
-                                                            next: {
-                                                              id: 14,
-                                                              question:
-                                                                "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
-                                                            },
-                                                          },
-                                                        ],
+                                                          "Explicar ao cliente sobre consumo do saldo de forma devida.",
+                                                      },
+                                                    },
+                                                    {
+                                                      text: "Não",
+                                                      next: {
+                                                        id: 14,
+                                                        question:
+                                                          "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
                                                       },
                                                     },
                                                   ],
@@ -1593,18 +1635,26 @@ export const fluxoDepositosJet = {
                                       ],
                                     },
                                   },
-                                  {
-                                    text: "Não",
-                                    next: {
-                                      id: 15,
-                                      question:
-                                        "Instruir cliente para verificar o pagamento e se localizar o comprovante correto nos contatar",
-                                    },
-                                  },
                                 ],
                               },
                             },
+                            {
+                              text: "Não",
+                              next: {
+                                id: 15,
+                                question:
+                                  "Instruir cliente para verificar o pagamento e se localizar o comprovante correto nos contatar.",
+                              },
+                            },
                           ],
+                        },
+                      },
+                      {
+                        text: "Não",
+                        next: {
+                          id: 16,
+                          question:
+                            "Informar o cliente que o pagamento não foi feito para nós, neste caso precisa encaminhar o comprovante correto",
                         },
                       },
                     ],
@@ -1651,70 +1701,60 @@ export const fluxoDepositosPin = {
                     question: "Pagamento feito para Paag ou PrimePag",
                     answers: [
                       {
-                        text: "Continuar",
+                        text: "Sim",
                         next: {
                           id: 6,
-                          question:
-                            "Informar o cliente que o pagamento não foi feito para nós, neste caso precisa encaminhar o comprovante correto.",
+                          question: "Recebeu o comprovante correto?",
                           answers: [
                             {
-                              text: "Continuar",
+                              text: "Sim",
                               next: {
                                 id: 7,
-                                question: "Recebeu o comprovante correto?",
+                                question:
+                                  "Verificar no sistema se o depósito reclamado está pendente",
                                 answers: [
                                   {
-                                    text: "Sim",
+                                    text: "Continuar",
                                     next: {
                                       id: 8,
-                                      question:
-                                        "Verificar no sistema se o depósito reclamado está pendente",
+                                      question: "Status pendente?",
                                       answers: [
                                         {
-                                          text: "Continuar",
+                                          text: "Sim",
                                           next: {
                                             id: 9,
-                                            question: "Status pendente?",
+                                            question:
+                                              "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
+                                          },
+                                        },
+                                        {
+                                          text: "Não",
+                                          next: {
+                                            id: 15,
+                                            question:
+                                              "Informar ao cliente que o depósito foi concluído. Vá em FINANCEIRO > MOVIMENTAÇÕES > CLIENTE e veja se o saldo foi consumido em apostas.",
                                             answers: [
                                               {
-                                                text: "Sim",
+                                                text: "Continuar",
                                                 next: {
-                                                  id: 10,
+                                                  id: 12,
                                                   question:
-                                                    "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
-                                                },
-                                              },
-                                              {
-                                                text: "Não",
-                                                next: {
-                                                  id: 11,
-                                                  question:
-                                                    "Informar ao cliente que o depósito foi concluído. Vá em FINANCEIRO > MOVIMENTAÇÕES > CLIENTE e veja se o saldo foi consumido em apostas.",
+                                                    "Saldo consumido em apostas?",
                                                   answers: [
                                                     {
-                                                      text: "Continuar",
+                                                      text: "Sim",
                                                       next: {
-                                                        id: 12,
+                                                        id: 13,
                                                         question:
-                                                          "Saldo consumido em apostas?",
-                                                        answers: [
-                                                          {
-                                                            text: "Sim",
-                                                            next: {
-                                                              id: 13,
-                                                              question:
-                                                                "Explicar ao cliente sobre consumo do saldo de forma devida.",
-                                                            },
-                                                          },
-                                                          {
-                                                            text: " Não",
-                                                            next: {
-                                                              id: 14,
-                                                              question:
-                                                                "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
-                                                            },
-                                                          },
-                                                        ],
+                                                          "Explicar ao cliente sobre consumo do saldo de forma devida.",
+                                                      },
+                                                    },
+                                                    {
+                                                      text: "Não",
+                                                      next: {
+                                                        id: 14,
+                                                        question:
+                                                          "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
                                                       },
                                                     },
                                                   ],
@@ -1726,18 +1766,26 @@ export const fluxoDepositosPin = {
                                       ],
                                     },
                                   },
-                                  {
-                                    text: "Não",
-                                    next: {
-                                      id: 15,
-                                      question:
-                                        "Instruir cliente para verificar o pagamento e se localizar o comprovante correto nos contatar",
-                                    },
-                                  },
                                 ],
                               },
                             },
+                            {
+                              text: "Não",
+                              next: {
+                                id: 15,
+                                question:
+                                  "Instruir cliente para verificar o pagamento e se localizar o comprovante correto nos contatar.",
+                              },
+                            },
                           ],
+                        },
+                      },
+                      {
+                        text: "Não",
+                        next: {
+                          id: 16,
+                          question:
+                            "Informar o cliente que o pagamento não foi feito para nós, neste caso precisa encaminhar o comprovante correto",
                         },
                       },
                     ],
@@ -1772,8 +1820,60 @@ export const fluxoSaquePin = {
                   text: "Sim",
                   next: {
                     id: 4,
-                    question:
-                      "Verificar no perfil do cliente se há algum comentário sobre o bloqueio dos saques. Se não houver abrir um ticket para o Shift Manager analisar o caso.",
+                    question: "Saque realizado?",
+                    answers: [
+                      {
+                        text: "Sim",
+                        next: {
+                          id: 5,
+                          question: "Encerrar Atendimento.",
+                        },
+                      },
+                      {
+                        text: "Não",
+                        next: {
+                          id: 6,
+                          question:
+                            "Confirmar se verificação Refletiu no portal weebet?",
+                          answers: [
+                            {
+                              text: "Sim",
+                              next: {
+                                id: 7,
+                                question:
+                                  "Se o saque estiver cancelado veja o motivo no portal WeeBet. Peça ao cliente tentar fazer o saque novamente através de outro meio de pagamento",
+                                answers: [
+                                  {
+                                    text: "Continuar",
+                                    next: {
+                                      id: 8,
+                                      question: "Saque pago?",
+                                      answers: [
+                                        {
+                                          text: "Sim",
+                                          next: {
+                                            id: 9,
+                                            question: "Encerrar Atendimento.",
+                                          },
+                                        },
+                                        {
+                                          text: "Não",
+                                          next: {
+                                            id: 10,
+                                            question:
+                                              "Abra Ticket para Shift Manager explicando o caso e informe o cliente que o caso será tratando com prioridade.",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
                   },
                 },
                 {
